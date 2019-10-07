@@ -3,9 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Styles/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:500&display=swap" rel="stylesheet">
   <title>E-commerce</title>
 </head>
 <body>
-  
+  <header>
+    <ul class="nav">
+        <li class="search-box"><input type="search" id="search" name="search"></li>
+        <a href="#category"><li>Categories</li></a>
+        <li id="cart"><img src="./Images/24px.svg" alt="" ><span >Cart</span></li>
+        <a id="account" href=""><img src="./Images/account.svg" alt=""><li>Login</li></a>
+    </ul>
+  </header>
+  <main id="category">
+    <div class="category-container">
+      <a href="#mobile">
+        <div class="card">
+          <h3> Buy Mobiles</h3>
+        </div>
+      </a>
+      <a href="#laptop">
+        <div class="card">
+          <h3> Buy Laptops</h3>
+        </div>
+      </a>
+    </div>
+    <div class="products-container">
+      <div id="mobile" >
+        <div class="product card">
+          <img src="Images/redmi-k20-na-original-imafgb4xpxutp86a.jpeg" alt="">
+          <div class="product-details">
+            <h4>Redmi K20</h4>
+            <ul class="details">
+              <li>6 GB RAM | 64 GB ROM |</li>
+              <li>16.23 cm (6.39 inch) FHD+ Display</li>
+              <li>48MP + 13MP + 8MP | 20MP Front Camera</li>
+              <li>4000 mAh Li-polymer Battery</li>
+              <li>Qualcomm Snapdragon 730 Processor</li>
+            </ul>
+          </div>
+          <div class="price">
+            <p>₹19,999</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+        <div class="product card">
+          <img src="Images/asus-6z-zs630kl-6a042ww-original-imafkzqyusfjpgyj.jpeg" alt="">
+          <div class="product-details">
+            <h4>Asus 6Z</h4>
+            <ul class="details">
+              <li>8 GB RAM | 256 GB ROM | Expandable Upto 2 TB</li>
+              <li>16.23 cm (6.39 inch) FHD+ Display</li>
+              <li>48MP + 13MP | 48MP + 13MP Dual Front Camera</li>
+              <li>5000 mAh Battery</li>
+              <li>Qualcomm SD 855 Processor</li>
+            </ul>
+          </div>
+          <div class="price">
+            <p>₹35,999</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+        <div class="product card">
+          <img src="Images/realme-x-rmx1901-in2-s-original-imafgzg9yvran9r3.jpeg" alt="">
+          <div class="product-details">
+            <h4>Realme X</h4>
+            <ul class="details">
+              <li>4 GB RAM | 128 GB ROM |</li>
+              <li>16.59 cm (6.53 inch) FHD+ Display</li>
+              <li>48MP + 5MP | 16MP Front Camera</li>
+              <li>3765 mAh Battery</li>
+              <li>Qualcomm Snapdragon 710 Octa Core 2.2 GHz AIE Processor</li>
+            </ul>
+          </div>
+          <div class="price">
+            <p>₹16,999</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+        <div class="product card">
+          <img src="Images/apple-iphone-xr-mryj2hn-a-original-imafa6zkm7qhv2zd.jpeg" alt="">
+          <div class="product-details">
+            <h4>iPhone XR</h4>
+            <ul class="details">
+              <li>64 GB ROM |</li>
+              <li>15.49 cm (6.1 inch) Display</li>
+              <li>12MP Rear Camera | 7MP Front Camera</li>
+              <li>A12 Bionic Chip Processor</li>
+              <li>iOS 13 Compatible</li>
+            </ul>
+          </div>
+          <div class="price">
+            <p>₹49,900</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div id="laptop">
+        <div class="product card">
+          <img src="Images/lenovo-ideapad-s540-laptop-original-imafj79vvptshxgr.jpeg" alt="">
+          <div class="product-details">
+            <h4>Lenovo Ideapad S540</h4>
+            <ul class="details">
+              <li>Pre-installed Genuine Windows 10 OS</li>
+              <li>NVIDIA Geforce NVIDIA® MX250 2GB GDDR5 for High Graphics Performance</li>
+              <li>Preloaded MS Office Home and Student 2016</li>
+              <li>Light Laptop without Optical Disk Drive</li>
+              <li>15.6 inch Full HD LED Backlit Anti-glare IPS Display</li>
+            </ul>
+          </div>
+          <div class="price">
+            <p>₹68,999</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+        <div class="product card">
+          <img src="Images/microsoft-na-2-in-1-laptop-original-imaf2p62v8r2hmz5.jpeg" alt="">
+          <div class="product-details">
+            <h4>Microsoft Surface Pro </h4>
+            <ul class="details">
+              <li>Carry It Along 2 in 1 Laptop</li>
+              <li>12.3 inch Quad HD+ LED Backlit PixelSense Multi Touch Display</li>
+              <li>Light Laptop without Optical Disk Drive</li>
+            </ul>
+          </div>
+          <div class="price">
+            <p>₹79,999</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+        <div class="product card">
+          <img src="Images/apple-na-thin-and-light-laptop-original-imafe6f78hur4jbh.jpeg" alt="">
+          <div class="product-details">
+            <h4>Apple MacBook Air</h4>
+            <ul class="details">
+              <li>Stylish & Portable Thin and Light Laptop</li>
+              <li>13.3 inch HD+ LED Backlit Display</li>
+              <li>Light Laptop without Optical Disk Drive</li>
+            </ul>
+          </div>
+          <div class="price">
+            <p>₹67,999</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+        <div class="product card">
+          <img src="Images/msi-na-gaming-laptop-original-imaffnv4zbpv5he4.jpeg" alt="">
+          <div class="product-details">
+            <h4>MSI Core i5 9th Gen </h4>
+            <ul class="details">
+              <li>NVIDIA Geforce GTX 1650 Max Q for Desktop Level Performance</li>
+              <li>15.6 inch Full HD LED Backlit IPS Display (with 60 Hz Refresh Rate, 100% sRGB)</li>
+              <li>Light Laptop without Optical Disk Drive</li>
+              <li>Pre-installed Genuine Windows 10 OS</li>
+            </ul>
+          </div>
+          <div class="price">
+            <p>₹19,999</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <section id="cart-modal" class="modal">
+    <div class="modal-content">
+      <h2> Your Cart</h2>
+      <button id="buy-now">Buy Now</button>
+    </div>
+  </section>
+  <section id="payment-modal" class="modal">
+    <div class="modal-content">
+      <h2>Payment Method</h2>
+      <div class="company" id="company-1">
+        <img class="company-img" src="./Images/mastercard.svg" alt="">
+        <h3 class="company-name">MasterCard</h3>
+        <img class="check" src="./Images/check.svg" alt="">
+      </div>
+      <div class="company" id="company-2">
+        <img class="company-img" src="./Images/maestro.svg" alt="">
+        <h3 class="company-name">Maestro</h3>
+        <img class="check" src="./Images/check.svg" alt="">
+      </div>
+      <div class="company" id="company-3">
+        <img class="company-img" src="./Images/visa.svg" alt="">
+        <h3 class="company-name">Visa</h3>
+        <img class="check" src="./Images/check.svg" alt="">
+      </div>
+      <button id="next">Next</button>
+    </div>
+  </section>
+  <section id="congrats-modal" class="modal">
+    <div class="modal-content">
+      <h2>Congrats!</h2>
+      <p>You have completed your Payment</p>
+    </div>
+  </section>
 </body>
 </html>
+
+<script src="./Scripts/index.js"></script>
