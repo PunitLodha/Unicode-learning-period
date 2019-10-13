@@ -1,0 +1,66 @@
+
+body{
+  background-color: rgb(4, 53, 187);
+  font-family: "Roboto",sans-serif;
+}
+h1{
+  font-size: 80px;
+  margin-top: 50px;
+  text-align: center;
+  font-weight: 400;
+  color: rgb(255, 146, 21);
+}
+
+main{
+  background-color: rgba(255, 164, 61, 0.658);
+  width: 30%;
+  height: 30%;
+  margin: 80px auto 80px auto;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  column-gap: 3px;
+  row-gap: 3px;
+}
+
+.grid-container > div{
+  background-color: rgb(23, 75, 219);
+  height: 100px;
+  text-align: center;
+  font-size: 60px;
+  line-height: 100px;
+  color: rgb(255, 146, 21);
+}
+
+.btn{
+  text-align: center;
+}
+
+#restart{
+  width: 180px;
+  height: 45px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  background-color: rgb(38, 125, 196);
+  color: rgb(255, 146, 21);
+  font-size: 24px;
+  border: 1px solid rgba(25, 88, 206, 0.829);
+  box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.8),-3px 3px 3px 0px rgba(0,0,0,0.8);
+}
+
+#restart:hover{
+  transform: translateY(3px);
+  box-shadow: 2px 2px 2px  0px rgba(0,0,0,0.3),-2px 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+#restart:focus{
+outline: none;
+}
+
+#winner{
+  font-size: 80px;
+  text-align: center;
+  color:rgb(255, 146, 21);
+}
