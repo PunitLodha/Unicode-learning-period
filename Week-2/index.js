@@ -8,9 +8,6 @@ const gameBoard = (() => {
       board[x][y] = type;
       return true;
     }
-    console.log(board[x][y]);
-    console.log(`${x} ${y}`);
-    console.log("error");
     return false;
   };
   const winner = () => {
@@ -54,7 +51,6 @@ const gameBoard = (() => {
       gridContainerChildren[k].innerHTML = "";
     }
     document.getElementById("winner").innerHTML = "";
-    console.log(board);
   }
   return { play, winner, clear };
 })();
@@ -77,13 +73,11 @@ const game = (() => {
   let Xturn = 1;
   let i = 0;
   function makePlay(e) {
-    console.log(e.target + i);
     if (Xturn) {
       const repeat = PlayerX.makeMove(
         e.target.classList.item(0)[0],
         e.target.classList.item(0)[1]
       );
-      console.log("x played");
       if (repeat === true) {
         document.querySelector(
           `.${CSS.escape(e.target.classList.item(0))}`
@@ -96,7 +90,6 @@ const game = (() => {
         e.target.classList.item(0)[0],
         e.target.classList.item(0)[1]
       );
-      console.log("O played");
       if (repeat === true) {
         document.querySelector(
           `.${CSS.escape(e.target.classList.item(0))}`
@@ -107,11 +100,12 @@ const game = (() => {
     }
 
     if (gameBoard.winner() !== "draw" || i === 9) {
+      let result = `winner is ${gameBoard.winner()}`;
       gridContainer.removeEventListener("click", makePlay);
-      document.getElementById(
-        "winner"
-      ).innerHTML = `Winner is ${gameBoard.winner()}`;
-      console.log(`winner is ${gameBoard.winner()}`);
+      if (gameBoard.winner() === "draw") {
+        result = "Draw";
+      }
+      document.getElementById("winner").innerHTML = result;
       i = 0;
       Xturn = 1;
     }
