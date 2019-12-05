@@ -10,7 +10,7 @@ export const StoriesContainer = () => {
   const [storyIds, setStoryIds] = useState([]);
 
   useEffect(() => {
-    getStoryIds().then(data => setStoryIds(data));
+    console.log(getStoryIds());
   }, []);
 
   return (

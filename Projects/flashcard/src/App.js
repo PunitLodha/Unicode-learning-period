@@ -1,7 +1,13 @@
 import React from 'react';
+import { StylesProvider } from '@material-ui/core/styles';
+import Container from './components/Container';
 
 function App() {
-  return <h1>App</h1>;
+  return (
+    <StylesProvider injectFirst>
+      <Container />
+    </StylesProvider>
+  );
 }
 
 export default App;
