@@ -22,7 +22,13 @@ const ResultCard = ({ word }) => {
 
   const setSynonyms = useCallback(() => {
     let Synonym = [];
-    getSynonyms(word).then(({ data }) => {
+    getSynonyms(word).then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       data.forEach(element => {
         Synonym = [...Synonym, element.word];
       });
@@ -36,7 +42,13 @@ const ResultCard = ({ word }) => {
 
   const setAntonyms = useCallback(() => {
     let Antonym = [];
-    getAntonyms(word).then(({ data }) => {
+    getAntonyms(word).then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       data.forEach(element => {
         Antonym = [...Antonym, element.word];
       });
@@ -50,7 +62,13 @@ const ResultCard = ({ word }) => {
 
   const setRhyme = useCallback(() => {
     let Rhyme = [];
-    getRhyme(word).then(({ data }) => {
+    getRhyme(word).then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       data.forEach(element => {
         Rhyme = [...Rhyme, element.word];
       });
@@ -65,7 +83,13 @@ const ResultCard = ({ word }) => {
   const setDefandFreq = useCallback(() => {
     let Def = [];
     let Freq = [];
-    getDefandFreq(word).then(({ data }) => {
+    getDefandFreq(word).then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       if (data[0].defs) {
         data[0].defs.forEach(element => {
           Def = [...Def, element.slice(1)];
