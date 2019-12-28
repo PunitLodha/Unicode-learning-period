@@ -1,7 +1,8 @@
 import React from 'react';
+import Container from './Container';
 
 function App() {
-  return <h1>Quiz App</h1>;
+  return <Container />;
 }
 
 export default App;
