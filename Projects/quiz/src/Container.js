@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import getRandomQuestions from './api/triviaAPI';
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import getQuestions from './api/triviaAPI';
 
 const StyledConatiner = styled.div`
   display: grid;
@@ -65,6 +67,8 @@ const Container = () => {
   const [seconds, setSeconds] = useState(10);
   const [points, setPoints] = useState(0);
 
+  const { category } = useParams();
+
   const countdown = () => {
     setSeconds(prevSeconds => prevSeconds - 1);
   };
@@ -79,7 +83,7 @@ const Container = () => {
   }, [seconds]);
 
   useEffect(() => {
-    getRandomQuestions().then(({ data }) => {
+    getQuestions(category).then(({ data }) => {
       let tempQuestions = [];
       const tempAnswers = [];
       let tempCorrectAnswers = [];
@@ -104,12 +108,11 @@ const Container = () => {
       setAnswers(tempAnswers);
       setCorrectAnswers(tempCorrectAnswers);
     });
-  }, []);
+  }, [category]);
 
   const handleClick = (event, answer) => {
     if (!answered) {
       if (answer !== correctAnswers[counter]) {
-        console.log(answer, correctAnswers[counter]);
         event.target.style.backgroundColor = 'red';
         setPoints(prevPoints => prevPoints - 1);
       } else {
@@ -158,7 +161,10 @@ const Container = () => {
           </Next>
         </>
       ) : (
-        <h1>{points}</h1>
+        <>
+          <h1>{points}</h1>
+          <Link to="/">Home</Link>
+        </>
       )}
     </div>
   );
