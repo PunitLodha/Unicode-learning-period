@@ -70,7 +70,6 @@ const Results = ({ points }) => {
     const currentDate = new Date().toLocaleString().replace(/,.*/, '');
     const currentResult = { date: currentDate, points };
     const results = pastResults ? [...pastResults, currentResult] : [currentResult];
-    console.log(results);
     results.sort(sortHelper);
     setResultsList(results);
     localStorage.setItem('results', JSON.stringify(results));
