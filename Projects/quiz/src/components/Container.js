@@ -1,38 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
-import getQuestions from './api/triviaAPI';
+import getQuestions from '../api/triviaAPI';
+import Clock from './Clock';
+import Results from './Results';
 
 const StyledConatiner = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin: 6rem auto;
-  max-width: 1280px;
-  grid-template-areas: 'question question question question';
+  grid-template-columns: repeat(2, 1fr);
+  margin: 6rem auto 3rem auto;
+  max-width: 128rem;
+  grid-template-areas: 'question question';
   text-align: center;
 `;
 
-const StyledQuestion = styled.div`
-  margin: 20px;
+const StyledQuestion = styled.h3`
+  margin: 2rem;
   grid-area: question;
-  border-radius: 20px;
-  border: 2px solid gainsboro;
-  font-size: 30px;
+  font-size: 3rem;
+  color: #094067;
 `;
 
 const StyledAnswer = styled.button`
-  grid-column: span 2;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 20px;
-  border: 2px solid goldenrod;
-  font-size: 24px;
-  color: black;
-  background-color: white;
+  @media (max-width: 600px) {
+    grid-column: span 2;
+  }
+
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 2.4rem;
+  color: #094067;
+  background-color: #fffffe;
+  transition: all 0.3s;
   &:hover {
-    transform: scale(1.1);
-    transition: all 0.3s;
+    transform: translateY(-4px);
+    box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.3);
   }
   &:focus {
     outline: none;
@@ -40,20 +44,61 @@ const StyledAnswer = styled.button`
   &:disabled {
     color: ${props => (props.answer === props.correctAnswer ? 'white' : 'darkgray')};
     background-color: ${props => (props.answer === props.correctAnswer ? 'green' : 'lightgray')};
-    border: 2px solid gray;
     &:hover {
+      box-shadow: none;
       transform: none;
     }
   }
 `;
 
 const Next = styled.button`
-  width: 150px;
-  border-radius: 5px;
-  background-color: black;
-  color: white;
-  font-size: 20px;
+  padding: 1rem 4rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #3da9fc;
+  color: #fffffe;
+  font-size: 3rem;
   visibility: ${props => (props.isVisible ? 'visible' : 'hidden')};
+  transition: all 0.3s;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.8);
+  }
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #fffffe;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+`;
+
+const Heading = styled.h1`
+  flex-grow: 1;
+  font-size: 3rem;
+  color: #094067;
+  text-transform: capitalize;
+`;
+
+const ClockContainer = styled.div`
+  display: flex;
+  align-items: center;
+  & h3 {
+    font-size: 2rem;
+    color: #094067;
+    margin-left: 0.5rem;
+  }
+`;
+
+const PointsContainer = styled.h3`
+  font-size: 2rem;
+  color: #094067;
+  text-align: left;
+  margin: 1rem;
 `;
 
 let timerID;
@@ -87,6 +132,7 @@ const Container = () => {
       let tempQuestions = [];
       const tempAnswers = [];
       let tempCorrectAnswers = [];
+
       data.results.forEach(result => {
         tempQuestions = [...tempQuestions, result.question];
         tempCorrectAnswers = [...tempCorrectAnswers, result.correct_answer];
@@ -120,6 +166,7 @@ const Container = () => {
       }
       event.target.style.color = 'white';
       setAnswered(true);
+      setSeconds(0);
     }
   };
 
@@ -132,13 +179,27 @@ const Container = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div>
       {counter < 10 ? (
         <>
-          <p>{seconds}</p>
+          <Header>
+            <PointsContainer>Points: {points}</PointsContainer>
+            <Heading>{category.replace('_', ' ')} Quiz</Heading>
+            <ClockContainer>
+              <Clock paused={answered} />
+              <h3>
+                {seconds < 10 ? '0' : ''}
+                {`${seconds} seconds left`}
+              </h3>
+            </ClockContainer>
+          </Header>
           <StyledConatiner>
             <StyledQuestion>
-              <p>{questions[counter] ? decodeURIComponent(questions[counter]) : ''}</p>
+              <p>
+                {questions[counter]
+                  ? `${counter + 1}: ${decodeURIComponent(questions[counter])}`
+                  : ''}
+              </p>
             </StyledQuestion>
             {answers[counter]
               ? answers[counter].map(answer => (
@@ -161,10 +222,7 @@ const Container = () => {
           </Next>
         </>
       ) : (
-        <>
-          <h1>{points}</h1>
-          <Link to="/">Home</Link>
-        </>
+        <Results points={points} />
       )}
     </div>
   );
