@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const mapCatergoryToIDs = {
-  generalKnowledge: '9',
-  histroy: '23',
-  videoGames: '15',
+  general_knowledge: '9',
+  history: '23',
+  video_games: '15',
   sports: '21',
   mythology: '20',
   computer: '18',
